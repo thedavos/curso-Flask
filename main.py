@@ -11,11 +11,10 @@ from flask import (
 import unittest
 
 from app import create_app
-from services.firestore_service import get_users
+from flask_login import login_required
+from services.firestore_service import get_users, get_todos
 
 app = create_app()
-
-todos = range(5)
 
 
 @app.cli.command()
@@ -35,20 +34,16 @@ def index():
 
 
 @app.route('/hello')
+@login_required
 def hello():
     user_ip = session.get('user_ip')
     username = session.get('username')
 
     ctx = {
         'user_ip': user_ip,
-        'todos': todos,
+        'todos': get_todos(user_id=username),
         'username': username
     }
-
-    users = get_users()
-
-    for user in users:
-        print(user)
 
     return render_template('hello.html', **ctx)
 

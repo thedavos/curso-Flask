@@ -13,6 +13,7 @@ Flask-WTF = "*"
 Flask-Testing = "*"
 blinker = "*"
 firebase-admin = "*"
+Flask-Login = "*"
 
 [requires]
 python_version = "3.6"
