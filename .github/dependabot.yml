@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: python-dotenv
+    versions:
+    - 0.15.0
+    - 0.16.0
+  - dependency-name: firebase-admin
+    versions:
+    - 4.5.1
+    - 4.5.2
+    - 4.5.3
+  - dependency-name: autopep8
+    versions:
+    - 1.5.4
+    - 1.5.5
+  - dependency-name: httplib2
+    versions:
+    - 0.18.0
